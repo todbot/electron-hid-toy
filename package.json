@@ -1,6 +1,6 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Play with Electron and node-hid",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
@@ -11,6 +11,7 @@
     "dev": "NODE_ENV='development' npm run start",
     "dist": "build -owl --x64 && build -wl --ia32",
     "dist:mac": "build --mac",
+    "dist:win64": "build --win --x64",
     "reload": "live-reload app --port 35729",
     "electron-rebuild": "electron-rebuild --pre-gyp-fix --force --module_dir . -w node-hid -e node_modules/electron-prebuilt",
     "postinstall": "npm run electron-rebuild"
@@ -50,7 +51,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.5.1",
+    "node-hid": "^0.5.2",
     "react": "^0.14.2",
     "react-bootstrap": "^0.27.3",
     "react-dom": "^0.14.2"
