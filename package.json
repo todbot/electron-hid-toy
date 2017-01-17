@@ -51,7 +51,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.5.2",
+    "node-hid": "^0.5.4",
     "react": "^0.14.2",
     "react-bootstrap": "^0.27.3",
     "react-dom": "^0.14.2"
