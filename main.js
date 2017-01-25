@@ -12,6 +12,13 @@ var BrowserWindow = electron.BrowserWindow;  // Module to create native browser 
 // Report crashes to our server.
 // require('crash-reporter').start();
 
+// Linux 3d acceleration causes black screen for Electron-based apps, so turn it off
+// see https://github.com/electron/electron/issues/4380 and
+// https://github.com/electron/electron/issues/5297
+if( process.platform === 'linux' ) {
+    app.disableHardwareAcceleration();
+}
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null;
