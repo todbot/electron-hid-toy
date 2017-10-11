@@ -13,8 +13,8 @@
     "dist": "build",
     "build": "build",
     "reload": "live-reload app --port 35729",
-    "electron-rebuild": "electron-rebuild --force --module_dir .",
-    "postinstall": "npm run electron-rebuild"
+    "clean": "rimraf dist node_modules package-lock.json",
+    "postinstall": "electron-builder install-app-deps"
   },
   "keywords": [
     "hid",
@@ -24,9 +24,15 @@
   ],
   "build": {
     "appId": "com.todbot.electron-hid-toy",
-    "win": {
-
+    "asar": true,
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "tar.gz",
+        "appimage"
+      ]
     },
+    "win": {},
     "mac": {
       "category": "public.app-category.utilities",
       "icon": "pkg/icon.icns"
@@ -62,7 +68,6 @@
   },
   "devDependencies": {
     "electron": "^1.7.5",
-    "electron-builder": "^19.35.1",
-    "electron-rebuild": "^1.6.0"
+    "electron-builder": "^19.35.1"
   }
 }
