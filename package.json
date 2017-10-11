@@ -1,7 +1,8 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.1.4",
-  "description": "Play with Electron and node-hid",
+  "version": "0.1.5",
+  "description": "Play with node-hid using Electron",
+  "homepage": "https://github.com/todbot/electron-hid-toy",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
   "license": "ISC",
@@ -9,10 +10,10 @@
   "scripts": {
     "start": "electron . --enable-logging --remote-debugging-port=9222",
     "dev": "NODE_ENV='development' npm run start",
-    "dist": "build -owl --x64 && build -wl --ia32",
+    "dist": "build",
     "build": "build",
     "reload": "live-reload app --port 35729",
-    "electron-rebuild": "electron-rebuild --force --module_dir . -w node-hid ",
+    "electron-rebuild": "electron-rebuild --force --module_dir .",
     "postinstall": "npm run electron-rebuild"
   },
   "keywords": [
@@ -23,13 +24,17 @@
   ],
   "build": {
     "appId": "com.todbot.electron-hid-toy",
-    "app-category-type": "public.app-category.utilities",
-    "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico",
+    "win": {
+
+    },
     "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "pkg/icon.icns"
+    },
+    "dmg": {
       "title": "Electron HID Toy",
-      "background": "pkg/background.png",
       "icon": "pkg/icon.icns",
-      "icon-size": 128,
+      "background": "pkg/background.png",
       "contents": [
         {
           "x": 355,
@@ -50,14 +55,14 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.5.4",
-    "react": "^0.14.2",
-    "react-bootstrap": "^0.27.3",
+    "node-hid": "^0.5.7",
+    "react": "^0.14.8",
+    "react-bootstrap": "^0.28.5",
     "react-dom": "^0.14.2"
   },
   "devDependencies": {
-    "electron": "^1.5.0",
-    "electron-builder": "^5.10.5",
-    "electron-rebuild": "^1.5.7"
+    "electron": "^1.7.5",
+    "electron-builder": "^19.35.1",
+    "electron-rebuild": "^1.6.0"
   }
 }
