@@ -2,12 +2,14 @@
 "use strict";
 
 require('babel-register');
-// require('./main.js');
-
 
 var electron = require('electron');
 var app = electron.app;  // Module to control application life.
 var BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+
+console.log("hello before node-hid!");
+var HID = require('node-hid');
+console.log("hello after node-hid!");
 
 // Report crashes to our server.
 // require('crash-reporter').start();

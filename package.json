@@ -1,8 +1,7 @@
 {
   "name": "electron-hid-toy",
   "version": "0.1.5",
-  "description": "Play with node-hid using Electron",
-  "homepage": "https://github.com/todbot/electron-hid-toy",
+  "description": "Play with Electron and node-hid",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
   "license": "ISC",
@@ -10,11 +9,12 @@
   "scripts": {
     "start": "electron . --enable-logging --remote-debugging-port=9222",
     "dev": "NODE_ENV='development' npm run start",
-    "dist": "build",
+    "dist": "build -owl --x64",
     "build": "build",
     "reload": "live-reload app --port 35729",
-    "clean": "rimraf dist node_modules package-lock.json",
-    "postinstall": "electron-builder install-app-deps"
+    "rebuild": "electron-rebuild",
+    "electron-rebuild": "electron-rebuild",
+    "postinstall": "npm run rebuild"
   },
   "keywords": [
     "hid",
@@ -25,35 +25,18 @@
   "build": {
     "appId": "com.todbot.electron-hid-toy",
     "asar": true,
-    "linux": {
-      "category": "Utility",
-      "target": [
-        "tar.gz",
-        "appimage"
-      ]
+    "npmRebuild": true,
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "publish": {
+      "provider": "github"
     },
-    "win": {},
     "mac": {
       "category": "public.app-category.utilities",
       "icon": "pkg/icon.icns"
     },
-    "dmg": {
-      "title": "Electron HID Toy",
-      "icon": "pkg/icon.icns",
-      "background": "pkg/background.png",
-      "contents": [
-        {
-          "x": 355,
-          "y": 125,
-          "type": "link",
-          "path": "/Applications"
-        },
-        {
-          "x": 155,
-          "y": 125,
-          "type": "file"
-        }
-      ]
+    "win": {
+      "target": "zip",
+      "icon": "pkg/icon.ico"
     }
   },
   "dependencies": {
@@ -61,13 +44,15 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.5.7",
+    "node-hid": "^0.7.0",
     "react": "^0.14.8",
     "react-bootstrap": "^0.28.5",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.7",
+    "tinynative": "^1.0.3"
   },
   "devDependencies": {
-    "electron": "^1.7.5",
-    "electron-builder": "^19.35.1"
+    "electron": "^1.7.10",
+    "electron-builder": "^19.46.9",
+    "electron-rebuild": "^1.6.0"
   }
 }
