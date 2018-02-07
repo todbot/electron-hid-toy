@@ -7,9 +7,8 @@ var electron = require('electron');
 var app = electron.app;  // Module to control application life.
 var BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 
-console.log("hello before node-hid!");
+// test we can load node-hid in main process
 var HID = require('node-hid');
-console.log("hello after node-hid!");
 
 // Report crashes to our server.
 // require('crash-reporter').start();
@@ -44,7 +43,7 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools({mode:'bottom'});
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

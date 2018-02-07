@@ -2,7 +2,7 @@
 
 A simple Electron app to experiment with `node-hid`.
 
-Tested on Electron v1.2.6.
+Tested on Electron v1.7.12. Originally tested on Electron v1.2.6.
 
 To use:
 ```

@@ -1,6 +1,6 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Play with Electron and node-hid",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
@@ -44,15 +44,14 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.7.0",
+    "node-hid": "^0.7.2",
     "react": "^0.14.8",
     "react-bootstrap": "^0.28.5",
-    "react-dom": "^0.14.7",
-    "tinynative": "^1.0.3"
+    "react-dom": "^0.14.7"
   },
   "devDependencies": {
-    "electron": "^1.7.10",
+    "electron": "^1.7.12",
     "electron-builder": "^19.46.9",
-    "electron-rebuild": "^1.6.0"
+    "electron-rebuild": "^1.7.2"
   }
 }
