@@ -2,12 +2,18 @@
 
 A simple Electron app to experiment with `node-hid`.
 
-Tested on Electron v1.7.12. Originally tested on Electron v1.2.6.
+Tested on Electron v5.0.1. Originally tested on Electron v1.2.6.
 
 To use:
 ```
 npm install
 npm start
+```
+
+To build the application:
+```
+npm install
+npm build
 ```
 
 ![screenshot](./screenshot.png)
