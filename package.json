@@ -1,6 +1,6 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Play with Electron and node-hid",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
@@ -9,13 +9,13 @@
   "scripts": {
     "start": "electron . --enable-logging --remote-debugging-port=9222",
     "dev": "cross-env NODE_ENV='development' npm run start",
-    "dist": "build --x64",
+    "dist": "electron-builder .",
     "dist-all": "build -owl --x64",
-    "build": "build",
+    "build": "electron-builder .",
     "reload": "live-reload app --port 35729",
     "rebuild": "electron-rebuild",
     "electron-rebuild": "electron-rebuild",
-    "postinstall": "npm run rebuild"
+    "postinstall": "electron-builder install-app-deps"
   },
   "keywords": [
     "hid",
@@ -45,15 +45,16 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.7.8",
+    "node-hid": "^0.7.9",
     "react": "^0.14.8",
     "react-bootstrap": "^0.28.5",
     "react-dom": "^0.14.7"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "electron": "^5.0.1",
-    "electron-builder": "^20.39.0",
-    "electron-rebuild": "^1.8.4"
+    "electron": "^6.0.0",
+    "electron-builder": "^21.2.0",
+    "electron-rebuild": "^1.8.5",
+    "node-abi": "^2.10.0"
   }
 }
