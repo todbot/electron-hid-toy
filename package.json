@@ -45,7 +45,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.9.0",
     "bootstrap": "^3.3.5",
-    "node-hid": "^0.7.9",
+    "node-hid": "^1.0.0",
     "prebuild": "^9.1.1",
     "react": "^0.14.8",
     "react-bootstrap": "^0.28.5",
