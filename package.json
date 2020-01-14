@@ -1,6 +1,6 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.1.15",
+  "version": "0.2.0",
   "description": "Play with Electron and node-hid",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
@@ -9,8 +9,8 @@
   "scripts": {
     "start": "electron . --enable-logging --remote-debugging-port=9222",
     "dev": "cross-env NODE_ENV='development' npm run start",
-    "dist": "electron-builder .",
-    "dist-all": "build -owl --x64",
+    "dist": "cross-env electron-builder",
+    "dist-debug": "cross-env DEBUG=electron-builder electron-builder",
     "build": "electron-builder .",
     "reload": "live-reload app --port 35729",
     "rebuild": "electron-rebuild",
@@ -25,15 +25,19 @@
   ],
   "build": {
     "appId": "com.todbot.electron-hid-toy",
-    "asar": true,
     "npmRebuild": true,
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "afterSign": "./pkg/afterSign.js",
+    "gatekeeperAssess": false,
     "publish": {
       "provider": "github"
     },
     "mac": {
       "category": "public.app-category.utilities",
-      "icon": "pkg/icon.icns"
+      "icon": "pkg/icon.icns",
+      "hardenedRuntime": true,
+      "entitlements": "./pkg/entitlements.mac.inherit.plist",
+      "entitlementsInherit": "./pkg/entitlements.mac.inherit.plist"
     },
     "win": {
       "target": "zip",
@@ -55,6 +59,7 @@
     "cross-env": "^6.0.3",
     "electron": "^7.1.2",
     "electron-builder": "^21.2.0",
+    "electron-notarize": "^0.2.1",
     "electron-rebuild": "^1.8.8"
   }
 }
