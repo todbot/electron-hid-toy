@@ -28,13 +28,13 @@
     "npmRebuild": true,
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "afterSign": "./pkg/afterSign.js",
-    "gatekeeperAssess": false,
     "publish": {
       "provider": "github"
     },
     "mac": {
       "category": "public.app-category.utilities",
       "icon": "pkg/icon.icns",
+      "gatekeeperAssess": false,
       "hardenedRuntime": true,
       "entitlements": "./pkg/entitlements.mac.inherit.plist",
       "entitlementsInherit": "./pkg/entitlements.mac.inherit.plist"
