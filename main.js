@@ -26,6 +26,10 @@ if( process.platform === 'linux' ) {
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null;
 
+// Temp fix before node-hid@1.3.0
+// https://github.com/electron/electron/issues/18397
+app.allowRendererProcessReuse = false;
+
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
@@ -40,9 +44,9 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow( {
-    width: 800, 
+    width: 800,
     height: 600,
-    webPreferences: { 
+    webPreferences: {
       nodeIntegration: true,
     }
   });
