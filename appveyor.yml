@@ -2,6 +2,7 @@ os: unstable
 
 environment:
 #  APPVEYOR_RDP_PASSWORD: mypassword
+# note: password set in ci.appveyor.com/project/todbot/electron-hid-toy/settings/environment
 
   matrix:
   - nodejs_version: "13"
@@ -9,7 +10,7 @@ environment:
 platform:
 - x64
 
-install: 
+install:
 - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:platform;
 - ps: >
     npm config set progress false
@@ -28,9 +29,14 @@ install:
       "appveyor_repo_tag" = $env:appveyor_repo_tag
     } | Out-String | Write-Host;
 
+build_script:
+- npm install
+- npm run dist
+#- npm run pack
+#- npm run dist:draft
+# show outputs
+- dir dist
 
 
 on_finish:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-
-
