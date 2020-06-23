@@ -28,7 +28,7 @@ var mainWindow = null;
 
 // Temp fix before node-hid@1.3.0
 // https://github.com/electron/electron/issues/18397
-app.allowRendererProcessReuse = false;
+// app.allowRendererProcessReuse = false;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
