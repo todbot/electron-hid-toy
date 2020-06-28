@@ -15,7 +15,7 @@ npm start
 To build the application:
 ```
 npm install
-npm build
+npm run build
 ```
 
 Notes:
