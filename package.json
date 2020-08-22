@@ -11,7 +11,7 @@
     "dev": "cross-env NODE_ENV='development' npm run start",
     "dist": "cross-env electron-builder",
     "dist-debug": "cross-env DEBUG=electron-builder electron-builder",
-    "build": "electron-builder .",
+    "build": "electron-builder",
     "reload": "live-reload app --port 35729",
     "rebuild": "electron-rebuild",
     "electron-rebuild": "electron-rebuild",
@@ -33,6 +33,7 @@
       "provider": "github"
     },
     "mac": {
+      "target": "zip",
       "category": "public.app-category.utilities",
       "icon": "pkg/icon.icns",
       "gatekeeperAssess": false,

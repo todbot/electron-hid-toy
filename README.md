@@ -19,6 +19,10 @@ npm run build
 ```
 
 Notes:
+- On MacOS, running `npm run build` will attempt to sign and notarize the app. This takes several minutes and requires setting the environment variables:
+   - `APPLEID` -- developer Apple ID
+   - `APPLEIDPASSWD` -- app-specific password for above Apple ID
+   - `TEAM_SHORT_NAME` -- team short name, as provided by `/Applications/Transporter.app/Contents/itms/bin/iTMSTransporter -m provider -u $APPLEID -p $APPLEIDPASSWD`
 
 - Uses the magic of `require('babel-register')` in both the app and renderer to do on-the-fly React transpiling
 
