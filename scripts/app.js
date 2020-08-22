@@ -1,66 +1,85 @@
 
 "use strict";
 
-var React = require('react');
-var ReactDOM = require('react-dom');
+const React = require('react');
+const ReactDOM = require('react-dom');
 
-var Row = require('react-bootstrap').Row;
-var Col = require('react-bootstrap').Col;
-var Grid = require('react-bootstrap').Grid;
-var Table = require('react-bootstrap').Table;
+const Row = require('react-bootstrap').Row;
+const Col = require('react-bootstrap').Col;
+const Container = require('react-bootstrap').Container;
+const Table = require('react-bootstrap').Table;
 
-var HID = require('node-hid');
+const HID = require('node-hid');
 
-var devices = HID.devices();
+const devices = HID.devices();
 
-var App = React.createClass({
+class HIDToyApp extends React.Component {
 
-    getInitialState: function() {
-        return {
-        };
-    },
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
 
-    render: function() {
-        var createDeviceRow = function(dev, index) {
-            return (
-                <tr key={index}>
-                    <td>{dev.vendorId}</td>
-                    <td>{dev.productId}</td>
-                    <td>{dev.product}</td>
-                    <td>{dev.manufacturer}</td>
-                    <td>{dev.serialNumber}</td>
-                    <td>{dev.path}</td>
-                </tr>
-            );
-        };
+  createDeviceRow(dev, index) {
+    return (
+      <tr key={index}>
+        <td>{dev.vendorId}</td>
+        <td>{dev.productId}</td>
+        <td>{dev.usagePage}</td>
+        <td>{dev.usage}</td>
+        <td>{dev.product}</td>
+        <td>{dev.manufacturer}</td>
+        <td>{dev.serialNumber}</td>
+        <td className="col-sm-2">{dev.path}</td>
+      </tr>
+    );
+  };
 
-        return (
-            <Grid>
-               <h1> Electron HID Toy! </h1>
+  createTable() {
+    return (
+      <Table bordered striped size="sm">
+        <thead>
+          <tr>
+            <th>vendorId</th>
+            <th>productId</th>
+            <th>usagePage</th>
+            <th>usage</th>
+            <th>product</th>
+            <th>manufacturer</th>
+            <th>serialNumber</th>
+            <th>path</th>
+          </tr>
+        </thead>
+        <tbody>
+          {devices.map( this.createDeviceRow, this )}
+        </tbody>
+      </Table>
+    )
+  }
 
-                <Row>
-                    <Col xs={12}>
-                        <h4> HID Devices connected </h4>
-                        <Table bordered condensed hover >
-    						<thead>
-    							<tr>
-                                    <th>VendorId</th>
-    								<th>ProductId</th>
-    								<th>Product</th>
-    								<th>Manufacturer</th>
-    								<th>SerialNumber</th>
-    								<th>Path</th>
-    							</tr>
-    						</thead>
-    						<tbody>
-    							{devices.map( createDeviceRow, this )}
-    						</tbody>
-    					</Table>
-                    </Col>
-                </Row>
-            </Grid>
-        );
-    }
-});
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <h1> Electron HID Toy! </h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h4> HID devices connected</h4>
+            (reload to see changes, mouse & keyboards are visible to node-hid but can't be opened)
+            {this.createTable()}
+          </Col>
+        </Row>
+      </Container>
+    )
+  }
+}
 
-ReactDOM.render( <App />,  document.getElementById('example') );
+ReactDOM.render(
+  <HIDToyApp />,
+  document.getElementById('example')
+);

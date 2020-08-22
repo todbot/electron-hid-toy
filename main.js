@@ -44,7 +44,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow( {
-    width: 800,
+    width: 1024,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
@@ -55,7 +55,9 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools({mode:'bottom'});
+  if( process.env.NODE_ENV === 'development' ) {
+    mainWindow.webContents.openDevTools({mode:'bottom'});
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
