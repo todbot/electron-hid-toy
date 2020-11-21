@@ -9,6 +9,7 @@ Tested on Electron v9.0.5. Originally tested on Electron v1.2.6.
 To use:
 ```
 npm install
+npm run rebuild
 npm start
 ```
 
