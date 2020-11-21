@@ -1,6 +1,6 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Play with Electron and node-hid",
   "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
