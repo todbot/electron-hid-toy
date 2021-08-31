@@ -1,22 +1,15 @@
 {
   "name": "electron-hid-toy",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Play with Electron and node-hid",
-  "main": "main.js",
   "author": "Tod Kurt <todbotdotcom@gmail.com> (https://github.com/todbot)",
   "license": "ISC",
   "repository": "todbot/electron-hid-toy",
   "scripts": {
-    "start": "electron . --enable-logging --remote-debugging-port=9222",
-    "dev": "cross-env NODE_ENV='development' npm run start",
-    "dist": "cross-env electron-builder",
-    "dist-debug": "cross-env DEBUG=electron-builder electron-builder",
-    "build": "electron-builder",
-    "reload": "live-reload app --port 35729",
-    "rebuild": "electron-rebuild --force",
-    "electron-rebuild": "electron-rebuild",
-    "postinstall": "electron-builder install-app-deps",
-    "clean": "rimraf node_modules dist"
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "keywords": [
     "hid",
@@ -28,16 +21,13 @@
     "appId": "com.todbot.electron-hid-toy",
     "npmRebuild": true,
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
-    "afterSign": "./pkg/afterSign.js",
-    "publish": {
-      "provider": "github"
-    },
+    "afterSign": "pkg/notarize.js",
     "mac": {
       "target": "zip",
       "category": "public.app-category.utilities",
       "icon": "pkg/icon.icns",
-      "gatekeeperAssess": false,
       "hardenedRuntime": true,
+      "gatekeeperAssess": false,
       "entitlements": "./pkg/entitlements.mac.inherit.plist",
       "entitlementsInherit": "./pkg/entitlements.mac.inherit.plist"
     },
@@ -47,20 +37,19 @@
     }
   },
   "dependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-preset-react": "^6.3.13",
-    "babel-register": "^6.9.0",
-    "bootstrap": "^4.5.2",
-    "node-hid": "^2.0.0-0",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.3.0",
-    "react-dom": "^16.13.1"
+    "bootstrap": "^4.6.0",
+    "node-hid": "^2.1.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
+    "react-dom": "^17.0.2",
+    "source-map-support": "^0.5.19"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "electron": "^11.0.2",
-    "electron-builder": "^22.9.1",
-    "electron-notarize": "^1.0.0",
-    "electron-rebuild": "^2.3.2"
+    "@babel/preset-react": "^7.14.5",
+    "electron": "8.2.0",
+    "electron-builder": "^22.4.1",
+    "electron-notarize": "^1.1.0",
+    "electron-webpack": "^2.8.2",
+    "webpack": "~4.42.1"
   }
 }
