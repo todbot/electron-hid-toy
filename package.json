@@ -19,7 +19,6 @@
   ],
   "build": {
     "appId": "com.todbot.electron-hid-toy",
-    "npmRebuild": true,
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "afterSign": "pkg/notarize.js",
     "mac": {
@@ -46,7 +45,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
-    "electron": "8.2.0",
+    "electron": "^9.4.4",
     "electron-builder": "^22.4.1",
     "electron-notarize": "^1.1.0",
     "electron-webpack": "^2.8.2",
