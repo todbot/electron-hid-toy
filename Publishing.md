@@ -15,6 +15,8 @@
   You will choose a password for the exported cert
 
 - Set the CSC_LINK and CSC_KEY_PASSWORD with path & passwd to exported cert
+  ` export CSC_LINK=/Users/biff/projects/codesign/codesign_cert.p12 `
+  ` export CSC_KEY_PASSWORD=hunter2 `
   
 - Set the APPLEID, APPLEID_PASS, and TEAM_SHORT_NAME environment variables
   
@@ -32,6 +34,10 @@
 - Purchase CodeSigning cert, get .p12/.pfx file with password
 
 - Set the CSC_LINK and CSC_KEY_PASSWORD with path & passwd to exported cert
+   ` $env:CSC_LINK="c:\users\biff\Desktop\projects\codesign\codesign_cert.pfx" `
+                   "C:\Users\biff\Desktop\projects\codesign\codesign_cert.pfx"
+   ` $env:CSC_KEY_PASSWORD="hunter2" ` 
+
 
 - Run `yarn dist`
 
