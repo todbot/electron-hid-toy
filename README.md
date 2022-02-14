@@ -2,6 +2,8 @@
 
 A simple Electron app to experiment with `node-hid`.
 
+Also see [electron-hid-test-erb](https://github.com/todbot/electron-hid-test-erb) for a test using [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate/)
+
 ![screenshot](./screenshot.png)
 
 Tested on Electron v9.0.5. Originally tested on Electron v1.2.6.
