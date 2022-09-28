@@ -68,6 +68,11 @@ export default class DeviceList extends React.Component {
         </Row>
         <Row>
           <Col>
+          <p> Electron version: {process.versions.electron}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <h4> HID devices connected</h4>
             (reload to see changes, mouse & keyboards are visible to node-hid but can't be opened)
             {this.createTable()}
